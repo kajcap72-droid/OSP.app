@@ -60,14 +60,11 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    // Hilt
+    // Hilt (jedyny processor KSP - bez Room, bez hilt-compiler, żeby uniknąć
+    // bug https://github.com/google/dagger/issues/4161 - FileAlreadyExistsException
+    // przy wielu rundach KSP)
     implementation("com.google.dagger:hilt-android:2.52")
     ksp("com.google.dagger:hilt-android-compiler:2.52")
-
-    // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
 
     // Retrofit + Moshi (przygotowane pod realne API)
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
@@ -84,7 +81,8 @@ dependencies {
     // WorkManager (przypomnienia)
     implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("androidx.hilt:hilt-work:1.2.0")
-    ksp("androidx.hilt:hilt-compiler:1.2.0")
+    // UWAGA: androidx.hilt:hilt-compiler usunięty - powoduje konflikt z głównym Hilt processor
+    // Jeśli będzie potrzebny WorkerFactory injection - włącz z powrotem i zaktualizuj kod.
 
     // osmdroid — mapa OpenStreetMap (bez kluczy API)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
