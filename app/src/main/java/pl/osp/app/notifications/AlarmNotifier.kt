@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
+import dagger.hilt.android.qualifiers.ApplicationContext
 import pl.osp.app.MainActivity
 import pl.osp.app.R
 import pl.osp.app.data.model.Alarm
@@ -19,7 +20,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class AlarmNotifier @Inject constructor(
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) {
 
     fun showAlarm(alarm: Alarm) {
