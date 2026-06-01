@@ -1,0 +1,32 @@
+*.iml
+.gradle/
+/local.properties
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+app/build/
+**/build/
+
+# IntelliJ / Android Studio
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Kotlin
+.kotlin/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OSP</string>
+    <string name="login_title">Logowanie do jednostki</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="login">Zaloguj</string>
+    <string name="login_skip">Pomiń (tryb demo)</string>
+</resources>

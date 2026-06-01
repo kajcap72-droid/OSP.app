@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="osp_red">#C8102E</color>
+    <color name="osp_red_dark">#8B0A1F</color>
+    <color name="osp_yellow">#FFC72C</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

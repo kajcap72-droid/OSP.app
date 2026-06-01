@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="48dp"
+    android:viewportWidth="36"
+    android:viewportHeight="48">
+    <!-- Pin tło -->
+    <path
+        android:fillColor="#C8102E"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M18,2C9.7,2 3,8.7 3,17c0,11 15,29 15,29s15,-18 15,-29C33,8.7 26.3,2 18,2z"/>
+    <!-- Płomień -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,8c0,0 -2,3 -2,6c0,1.5 1,2.5 1,4c0,1 -0.7,1.7 -1.5,1.7c-0.8,0 -1.5,-0.6 -1.5,-1.7c0,-1 0.3,-1.7 0.7,-2.3C12.8,16.5 11,19 11,22c0,3.3 3.1,6 7,6s7,-2.7 7,-6C25,17.7 21.5,13 18,8z"/>
+</vector>
