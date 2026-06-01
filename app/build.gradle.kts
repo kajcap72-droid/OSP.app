@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.kapt")   // KAPT zamiast KSP - stabilny, bez bug'a #4161
     id("com.google.dagger.hilt.android")
 }
 
@@ -39,6 +39,11 @@ android {
     }
 }
 
+// KAPT config - poprawia obsługę typów null/error przez Hilt
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2024.09.02")
     implementation(composeBom)
@@ -60,11 +65,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    // Hilt (jedyny processor KSP - bez Room, bez hilt-compiler, żeby uniknąć
-    // bug https://github.com/google/dagger/issues/4161 - FileAlreadyExistsException
-    // przy wielu rundach KSP)
-    implementation("com.google.dagger:hilt-android:2.52")
-    ksp("com.google.dagger:hilt-android-compiler:2.52")
+    // Hilt - KAPT (zamiast KSP - bez bug'a https://github.com/google/dagger/issues/4161)
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 
     // Retrofit + Moshi (przygotowane pod realne API)
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
@@ -81,19 +84,13 @@ dependencies {
     // WorkManager (przypomnienia)
     implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("androidx.hilt:hilt-work:1.2.0")
-    // UWAGA: androidx.hilt:hilt-compiler usunięty - powoduje konflikt z głównym Hilt processor
-    // Jeśli będzie potrzebny WorkerFactory injection - włącz z powrotem i zaktualizuj kod.
+    // kapt("androidx.hilt:hilt-compiler:1.2.0") - opcjonalne, dla WorkerFactory injection
 
     // osmdroid — mapa OpenStreetMap (bez kluczy API)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
 
-    // Lokalizacja (do pozycji „jesteś tutaj" na mapie)
+    // Lokalizacja
     implementation("com.google.android.gms:play-services-location:21.3.0")
-
-    // Firebase Cloud Messaging — opcjonalne (komentarz w OspFirebaseMessagingService.kt
-    // wyjaśnia jak włączyć). Zostawione bez plug-inu, żeby projekt budował się od razu.
-    // implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
-    // implementation("com.google.firebase:firebase-messaging-ktx")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
